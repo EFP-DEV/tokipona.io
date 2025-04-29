@@ -7,4 +7,5 @@ function index()
     // verifier 2-3 truc
 
     // afficher la page
+    render('home/home.php');
 }

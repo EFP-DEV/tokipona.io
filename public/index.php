@@ -42,12 +42,15 @@ function render($partial, $data = [])
     $partial = SITE_ROOT . 'app/view/public/' . $partial;
 
     $skeleton = file_get_contents($skeleton);
+
     ob_start();
     include($partial);
     $partial = ob_get_clean();
-
-    $page = str_replace('%%MAIN_CONTENT%%', $partial, $skeleton);
-    // echo $partial;
+    
+    if(!empty($data['head_title'])){
+        $page = str_replace('%%HEAD_TITLE%%', $data['head_title'], $page);
+    }
+    $page = str_replace('%%MAIN_CONTENT%%', $partial, $page);
     echo $page;
 }
 

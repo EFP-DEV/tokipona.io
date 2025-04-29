@@ -9,8 +9,6 @@ function index()
 
 function send()
 {
-    var_dump($_POST);
-
     // traitement du formulaire (stocker en db + envoyer un mail un sms )
     $processingWentFine = false;
     if($processingWentFine){
@@ -20,9 +18,8 @@ function send()
         $data = [];
         $data['error'] = 'Une erreur est survenue lors de l\'envoi du message. Veuillez réessayer.';
         $data['post_data'] = $_POST;
+        $data['head_title'] = 'Contact - Error';
         render('contact/form.php', $data);
     }
-
-    die;
 }
 
